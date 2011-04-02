@@ -7,27 +7,19 @@
 		<script type = "text/javascript" src="../src/hash_handler.js"></script>		
 		<script type = "text/javascript" src="../src/route.js"></script>
 		<script type = "text/javascript" src="../src/event.js"></script>
+		<script type = "text/javascript" src="mvp_main.js"></script>
+		<script type = "text/javascript" src="mvp_second.js"></script>
+		<script type = "text/javascript" src="route.js"></script>
 		<script type = "text/javascript" >
 			window.onload = function(){
-				HH.Route.register({
-					"search": function(params){
-						console.log(params)
-					},
-				
-					"result": function(){
-						console.log("result route has activated")
-					}
-				});
-				
 				HH.Route.activate();
+				
 			}
 			
 		</script>
 	</head>
 	<body>
-		<ul>
-			<li><a href="#search">Search </a></li>
-			<li><a href="#result">Search Result</a></li>
+		<ul id="content">
 		</ul>
 	</body>
 </html>

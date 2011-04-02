@@ -12,8 +12,9 @@ HH.Event = function(){
 			var hash = location.hash.slice(1).split("/")[0]; 
 			var afterHashString = location.hash.split("/");
 			var param = afterHashString.slice(1);
-			if(routeCallbacks[hash]){
-				for(var i = 0, len = routeCallbacks[hash].length; i < len; i++){
+			var len = routeCallbacks[hash].length;
+			if(len){
+				for(var i = 0; i < len; i++){
 					routeCallbacks[hash][i](param);
 				}
 			} 

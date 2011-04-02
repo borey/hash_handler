@@ -1,0 +1,9 @@
+Project
+	- lib
+	 | hash_handler.js
+	 | utility.js
+	- src
+	 + controller
+	 + model
+	 + view
+ 	application.js

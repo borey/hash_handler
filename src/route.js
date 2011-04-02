@@ -19,7 +19,7 @@ HH.Route = function(){
 				}, 100);
 			}
 				
-			if(location.hash) HH.Event.handleRouteChange();
+			HH.Event.handleRouteChange();
 		}
 	};
 }();
