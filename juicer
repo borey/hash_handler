@@ -1,0 +1,5 @@
+/**
+* @depends src/hash_handler.js
+* @depends src/route.js
+* @depends src/event.js
+*/
