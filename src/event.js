@@ -15,7 +15,7 @@ HH.Event = function(){
 			var len = routeCallbacks[hash].length;
 			if(len){
 				for(var i = 0; i < len; i++){
-					routeCallbacks[hash][i]();
+					routeCallbacks[hash][i](param);
 				}
 			} 
 		}
