@@ -1,6 +1,10 @@
 HH.Route.register({
-	"main": MainPresenter.presenter_method,
-	"": MainPresenter.presenter_method,
+	"main": MainPresenter.presenterMethod,
+	"": MainPresenter.presenterMethod,
 
-	"second": SecondPresenter.process
+	"second": SecondPresenter.process,
+	
+	"base": BasePresenter.baseMethod,
+	"base/:": BasePresenter.idMethod,
+	"base/*": BasePresenter.anyMethod
 });

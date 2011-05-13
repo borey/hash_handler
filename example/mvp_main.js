@@ -1,14 +1,14 @@
 var MainPresenter = function(){
 	return {
-		presenter_method: function(){
-			MainModel.model_method();
+		presenterMethod: function(){
+			MainModel.modelMethod();
 		}
 	}
 }();
 
 var MainView = function(){
 	return {
-		view_method: function(){
+		viewMethod: function(){
 			var content = document.getElementById("content");
 			content.innerHTML ="";
 			var li = document.createElement("li");
@@ -23,9 +23,9 @@ var MainView = function(){
 
 var MainModel = function(){
 	return {
-		model_method: function(){
+		modelMethod: function(){
 			console.log("ajax...");
-			MainView.view_method();
+			MainView.viewMethod();
 		}
 	}
 }();
