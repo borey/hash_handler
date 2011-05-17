@@ -113,7 +113,7 @@ HH.Event = function(){
 
 				callbackLen = routeCallbacks[hashes[0]][option].length;
 				for(var i = 0; i < callbackLen; i++) {
-					routeCallbacks[hashes[0]][option][i](hash[1], param);
+					routeCallbacks[hashes[0]][option][i](hashes[1], param);
 				}
 			} else {
 				if (!routeCallbacks[hashes[0]][all]) {
