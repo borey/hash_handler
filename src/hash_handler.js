@@ -1,6 +1,9 @@
 var HashHandler = HH = {};
 
-var console = console || {};
-console.log = console.log || function(){};
-console.warn = console.warn || function(){};
-console.error = console.error || function(){};
+if(typeof window.console == "undefined") {
+	window.console = {
+		log: function(){},
+		warn: function(){},
+		error: function(){}
+	}
+}
