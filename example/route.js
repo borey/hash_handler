@@ -6,5 +6,6 @@ HH.Route.register({
 	
 	"base": BasePresenter.baseMethod,
 	"base/:": BasePresenter.idMethod,
-	"base/*": BasePresenter.anyMethod
+	"base/*": BasePresenter.anyMethod,
+	"404": BasePresenter.pageNotFoundMethod
 });

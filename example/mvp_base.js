@@ -10,6 +10,10 @@ var BasePresenter = function(){
 		
 		anyMethod: function(param){
 			BaseView.renderAny(param);
+		},
+		
+		pageNotFoundMethod: function() {
+			BaseView.renderPageNotFound();
 		}
 	}
 }();
@@ -26,6 +30,10 @@ var BaseView = function(){
 		
 		renderAny: function(){
 			console.log("render route \"base/*\"");
+		},
+		
+		renderPageNotFound: function(){
+			console.log("Page Not Found!")
 		}
 	}
 }();

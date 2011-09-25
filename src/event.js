@@ -6,6 +6,18 @@ HH.Event = function(){
 		idFormat = /\/\:/,
 		anyFormat = /\/\*/;	
 		
+	var handleRouteNotFound = function( routeCallbacks, msg ) {
+		try {
+			routeCallbacks["404"][none][0]();
+		} catch(e){
+			console.error("callback for \"" + msg +"\" was not set");
+		};
+	};	
+	
+	var showWarningMessage = function( msg ) {
+		console.warn("callback for \"" + msg + "\" route is undefined");
+	};
+		
 	return {
 		register: function(route, callback){
 			var hash = route.split("/")[0];
@@ -13,7 +25,7 @@ HH.Event = function(){
 			
 			if(idFormat.test(route)) {
 				if(!callback) {
-					console.warn("callback for \"" + route + "/:\" route is undefined");
+					showWarningMessage( route );
 					return;
 				}
 				
@@ -21,7 +33,7 @@ HH.Event = function(){
 				routeCallbacks[hash][option].push(callback);
 			} else if((anyFormat).test(route)) {
 				if(!callback) {
-					console.warn("callback for \"" + route + "/*\" route is undefined");
+					showWarningMessage( route );
 					return;
 				}
 				
@@ -29,7 +41,7 @@ HH.Event = function(){
 				routeCallbacks[hash][all].push(callback);
 			} else {
 				if(!callback) {
-					console.warn("callback for \"" + route + "\" route is undefined");
+					showWarningMessage( route + "" );
 					return;
 				}
 				
@@ -47,8 +59,8 @@ HH.Event = function(){
 				callbackLen;
 			
 			if(len == 1) {
-				if (!routeCallbacks[hashes[0]][none]) {
-					console.error("callback for \"" + hashes[0] +"/:\" was not set");
+				if (!routeCallbacks[hashes[0]] || !routeCallbacks[hashes[0]][none]) {
+					handleRouteNotFound( routeCallbacks, hashes[0] );
 					return;
 				}
 				
@@ -58,7 +70,7 @@ HH.Event = function(){
 				}
 			} else if(len == 2){
 				if (!routeCallbacks[hashes[0]][option]) {
-					console.error("callback for route \"" + hashes[0] +"/:\" was not set");
+					handleRouteNotFound( routeCallbacks, hashes[0] + "/:" );
 					return;
 				}
 
@@ -68,7 +80,7 @@ HH.Event = function(){
 				}
 			} else {
 				if (!routeCallbacks[hashes[0]][all]) {
-					console.error("callback for route \"" + hashes[0] +"/*\" was not set");
+					handleRouteNotFound( routeCallbacks, hashes[0] + "/*" );
 					return;
 				}
 				
