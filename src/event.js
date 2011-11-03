@@ -52,7 +52,9 @@ HH.Event = function(){
 		
 		handleRouteChange: function(){
 			if(!routeCallbacks)return;
-			var hashWithQuery = location.hash.slice(1).split("?"),
+
+			var hashString = window.location.href.split("#")[1] || "",
+				hashWithQuery = hashString.split("?"),
 				hashes = hashWithQuery[0].split("/"),
 				param = hashWithQuery[1],
 				len = hashes.length,
