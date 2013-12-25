@@ -4,7 +4,8 @@ HH.Event = function(){
 		all = "all",
 		none = "none",
 		idFormat = /\/\:/,
-		anyFormat = /\/\*/;	
+		anyFormat = /\/\*/,
+    isTriggerHashChange = true;
 		
 	var handleRouteNotFound = function( routeCallbacks, msg ) {
 		try {
@@ -49,9 +50,15 @@ HH.Event = function(){
 				routeCallbacks[hash][none].push(callback);
 			}
 		},
-		
+
+    updateTrigger: function (trigger) {
+      isTriggerHashChange = trigger;
+    },
+
 		handleRouteChange: function(){
-			if(!routeCallbacks)return;
+			if(!routeCallbacks || !isTriggerHashChange) {
+        return;
+      }
 
 			var hashString = window.location.href.split("#")[1] || "",
 				hashWithQuery = hashString.split("?"),

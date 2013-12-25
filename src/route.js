@@ -1,4 +1,7 @@
 HH.Route = function(){
+  var interval = null,
+    isTriggerUpdateUrl = true;
+
 	return {
 		register : function(route){
 			for(var hash in route){
@@ -11,7 +14,7 @@ HH.Route = function(){
 				window.onhashchange = HH.Event.handleRouteChange;
 			} else { // event not supported:
 				var hashStorage = window.location.hash;
-				setInterval(function () {
+				interval = setInterval(function () {
 					if (window.location.hash != hashStorage) {
 						hashStorage = window.location.hash;
 						HH.Event.handleRouteChange();
@@ -20,7 +23,23 @@ HH.Route = function(){
 			}
 				
 			HH.Event.handleRouteChange();
-		}
+		},
+
+    updateUrl: function (url) {
+      if (!url) {
+        return;
+      }
+
+      HH.Event.updateTrigger(false);
+      var callback = function(){
+        window.removeEventListener("hashchange", callback)
+        HH.Event.updateTrigger(true);
+      };
+
+      var hashChange = window.addEventListener("hashchange", callback, false);
+
+      window.location.href = url;
+    }
 	};
 }();
 
