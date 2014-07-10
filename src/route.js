@@ -3,6 +3,10 @@ HH.Route = function(){
     isTriggerUpdateUrl = true;
 
 	return {
+    destroy: function() {
+      HH.Event.clear();
+    },
+
 		register : function(route){
 			for(var hash in route){
 				HH.Event.register(hash, route[hash]);

@@ -51,6 +51,10 @@ HH.Event = function(){
 			}
 		},
 
+    clear: function () {
+      routeCallbacks = {};
+    },
+
     updateTrigger: function (trigger) {
       isTriggerHashChange = trigger;
     },
